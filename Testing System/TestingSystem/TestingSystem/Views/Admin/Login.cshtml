@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 text-center" style="min-width: 50%; margin-left: 25%; margin-top: 200px;">
+        <div class="main" style="display: inline-block;">
+            <h3>Вхід в систему</h3>
+            @using (@Html.BeginForm("CheckLogin", "Admin", FormMethod.Post, new {id = "loginDataForm"}))
+            {
+                <input type="text" id="login" name="login" class="form-control" placeholder="Логін"/>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Пароль"/>
+                <span id="errorMessage" style="color: red;"></span><br />
+                <input type="submit" value="Увійти" id="loginBtn"/>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        
+                        function CheckField(element, event) {
+                            if (element.val().trim() === "") {
+                                event.preventDefault();
+                                element.addClass("errorStyle");
+                                $("#errorMessage").html("<img src='../Content/Images/icon-error.png'/>Виділені поля мають бути заповнені");
+                            }
+                        }
+
+                        $("#login, #password").change(function () {
+                            if ($(this).val() != "") {
+                                $(this).removeClass("errorStyle");
+                                $("#errorMessage").text("");
+                            }
+                        });
+
+                        $("#loginBtn").on('click', function () {
+                            CheckField($("#login"), event);
+                            CheckField($("#password"), event);
+                        });
+
+                    });
+                </script>
+            }
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Результаты тестирования";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model TestingSystem.Models.Student
+<h2>Результаты тестирования</h2>
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>№</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Группа</th>
+        <th>Имя компьютера</th>
+        <th>IP-адрес компьютера</th>
+        <th>Дата прохождения теста</th>
+        <th>Баллы</th>
+    </tr>
+    @{ int i = 1; }
+    @foreach (var result in ViewBag.stud)
+    {
+        var id = i++;
+        var name = result.Name;
+        var lastName = result.LastName;
+        var group = result.Group;
+        var pcName = result.PCName;
+        var ipAddress = result.IPAddress;
+        var dateTime = result.DateAndTime.ToString();
+        var points = result.Points;
+        <tr>
+            <td>@id</td>
+            <td>@name</td>
+            <td>@lastName</td>
+            <td>@group</td>
+            <td>@pcName</td>
+            <td>@ipAddress</td>
+            <td>@dateTime</td>
+            <td><b>@points</b></td>
+        </tr>
+    }
+</table>

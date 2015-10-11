@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        
+        <button id="start" type="submit">Почати!</button>
+        <div class="main" id="main">
+            <div id="questionAndAnswers"></div>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#main, #nextQuestionBtn").hide();
+                    $("#start, .nextQuestionBtn").on('click', function() {
+                        $("#main").fadeOut(500, function () {
+                            $("#nextQuestionBtn").show();
+                            $.ajax({
+                                url: '/Home/Testing',
+                                method: "post",
+                                dataType: "json",
+                                data: { answerFromClient: $("input[name=answerFromClient]:checked").val() },
+                                success: function(data, textStatus) {
+                                    console.log(data);
+                                    if (data.isFinished) {
+                                        $("#main").html("<h2>Ваш результат: " + data.result + "</h2>");
+                                        $("#start").hide();
+                                    } else {
+                                        $("#questionAndAnswers").html("<h2>" + data[0] + "</h2>" +
+                                            "<input type='radio' name='answerFromClient' value=" + data[2][0] + " id='ans0'/><label for='ans0'>" + data[1][0] + "</label><br/>" +
+                                            "<input type='radio' name='answerFromClient' value=" + data[2][1] + " id='ans1'/><label for='ans1'>" + data[1][1] + "</label><br/>" +
+                                            "<input type='radio' name='answerFromClient' value=" + data[2][2] + " id='ans2'/><label for='ans2'>" + data[1][2] + "</label><br/>" +
+                                            "<input type='radio' name='answerFromClient' value=" + data[2][3] + " id='ans3'/><label for='ans3'>" + data[1][3] + "</label><br/>");
+                                        $("#start").hide();
+                                    }
+
+                                    $("#main").fadeIn(500);
+                                }
+                            });
+                        });
+
+                    });
+                });
+
+            </script>
+            <input type='submit' value='Далі' id='nextQuestionBtn' class='nextQuestionBtn'/>
+        </div>
+        
+    </div>
+</div>

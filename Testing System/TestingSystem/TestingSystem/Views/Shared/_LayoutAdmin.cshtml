@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body style="background-color: #ffffff;">
+<div class="row menu">
+    <ul class="nav nav-pills">
+        <li role="presentation"><a href="@Url.Action("Index", "Admin")">Результаты тестирования</a></li>
+        <li role="presentation"><a href="@Url.Action("AddNewQuestion", "Admin")">Управление вопросами</a></li>
+        <li role="presentation"><a href="@Url.Action("Logout", "Admin")">Выйти из системы</a></li>
+    </ul>
+</div>
+<div class="row" style="margin-left: 100px">
+    <div class="col-xs-9">
+        
+
+        @RenderBody()
+    </div>
+</div>
+
+</body>
+</html>

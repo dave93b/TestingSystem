@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Система тестування";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1 class="text-center">Ласкаво просимо до системи тестування</h1>
+        <button id="start" type="submit">Почати тестування</button>
+        <button id="aboutTesting" type="submit">Правила</button>
+        <div class="main" id="main">
+            @using (@Html.BeginForm("Index", "Home", FormMethod.Post, new {id = "personalDataForm"}))
+            {
+                <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Ім'я" required="required"/>
+                <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Прізвище" required="required"/>
+                <input type="text" id="group" name="group" class="form-control" placeholder="Група" required="required"/>
+                <input type="hidden" id="pcName" name="pcName" value="@Environment.MachineName"/>
+                <span id="errorMessage" style="color: red;"></span><br/>
+                <input type="submit" value="СТАРТ" id="startTestBtn"/>
+            }
+
+        </div>
+        <div class="main" id="about">
+            <h1>Правила</h1>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#main").hide();
+                $("#about").hide();
+
+                $("#start").on('click', function() {
+                    $("#about").hide();
+                    $("#main").fadeToggle(400);
+                });
+
+                $("#aboutTesting").on('click', function() {
+                    $("#main").hide();
+                    $("#about").fadeToggle(400);
+                });
+
+
+                function CheckField(element, event) {
+                    if (element.val().trim() === "") {
+                        event.preventDefault();
+                        element.addClass("errorStyle");
+                        $("#errorMessage").html("<img src='../Content/Images/icon-error.png'/>Виділені поля мають бути заповнені");
+                    }
+                }
+
+                $("#firstName, #lastName, #group").change(function() {
+                    if ($(this).val() != "") {
+                        $(this).removeClass("errorStyle");
+                        $("#errorMessage").text("");
+                    }
+                });
+
+
+                $("#startTestBtn").on('click', function() {
+                    CheckField($("#firstName"), event);
+                    CheckField($("#lastName"), event);
+                    CheckField($("#group"), event);
+                });
+
+            });
+
+        </script>
+    </div>
+</div>
+

@@ -1,0 +1,92 @@
+﻿body {
+    padding-bottom: 20px;
+    background-color: #FFFDF2;
+}
+
+.main {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 2px 3px 7px #ccc;
+    min-height: 300px;
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.main input[type=radio] {
+    margin: 10px;
+}
+
+input[type="text"] {
+    margin: 7px 0;
+    width: 300px;
+}
+
+.errorStyle {
+    border: 1px solid red;
+    box-shadow: 0px 0px 1px red;
+}
+
+#startTestBtn, #loginBtn, .nextQuestionBtn {
+    color: #ffffff;
+    background-color: green;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 4px;
+    border: none;
+    font: 200 normal 18px arial;
+    outline: none;
+}
+
+#startTestBtn:hover, #loginBtn:hover, .nextQuestionBtn:hover {
+    background-color: #32cd32;
+
+}
+
+#start, #aboutTesting {
+    border: 2px solid #ccc;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 7px;
+    margin: 5px 0;
+    outline: none;
+}
+
+#start:hover, #aboutTesting:hover {
+    border: 2px solid #ccc;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #ccc;
+    border-radius: 7px;
+    outline: none;
+}
+
+.LoginForm {
+    background-color: #ffffff;
+    padding: 20px;
+    height: 50%;
+    margin-top: 25%;
+    border: 2px solid #cccccc;
+    border-radius: 4px;
+    box-shadow: 3px 0px 3px #ccc;
+}
+
+.menu{
+    background-color: grey; 
+    height: 50px;
+    padding: 5px;
+    box-shadow: 0 3px 2px #cccccc;
+    
+}
+
+.menu li a {
+    color: #ffffff;
+    margin-left: 20px;
+}
+
+.menu li a:hover {
+    color: #808080;
+    margin-left: 20px;
+}
+
+

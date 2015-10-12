@@ -4,5 +4,24 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>AddNewQuestion</h2>
+<h2>Редактировать вопросы</h2>
 
+@foreach (var question in ViewBag.Questions)
+{
+    var questionId = question.QuestionId;
+    var questionVal = question.QuestionValue;
+    
+    <h3>@questionId. @questionVal</h3>
+
+    foreach (var answer in ViewBag.Answers)
+    {
+        if (answer.QuestionId == question.QuestionId)
+        {
+            var answerId = answer.AnswerId;
+            var answerVal = answer.AnswerValue;
+
+            <a href="#">@answerId. @answerVal</a><br />
+        }
+
+    }
+}

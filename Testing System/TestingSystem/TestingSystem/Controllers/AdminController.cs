@@ -25,6 +25,11 @@ namespace TestingSystem.Controllers
 
         public ActionResult AddNewQuestion()
         {
+            var context = new TestingSystemEntities();
+            var questions = context.Questions.ToList();
+            var answers = context.Answers.ToList();
+            ViewBag.Questions = questions;
+            ViewBag.Answers = answers;
             return View();
         }
         

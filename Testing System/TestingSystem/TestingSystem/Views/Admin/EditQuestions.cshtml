@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "AddNewQuestion";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="margin: 30px 0">Редактировать вопросы</h2>
+<div class="row">
+    @foreach (var question in ViewBag.Questions)
+    {
+
+        var questionId = question.QuestionId;
+        var questionVal = question.QuestionValue;
+
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="adminQuestionDiv editingHidedQuestions">
+
+                @using (Html.BeginForm("DeleteQuestion", "Admin", FormMethod.Post))
+                {
+                    <input type="submit" class="pull-right editDelIcons" value="&#10006;" data-toggle="tooltip" title="Удалить">
+                    <input type="hidden" name="questionIdToDel" value="@questionId"/>
+                }
+
+                @using (Html.BeginForm("EditQuestion", "Admin", FormMethod.Get))
+                {
+                    <input type="submit" class="pull-right editDelIcons" value="&#10000;" data-toggle="tooltip" title="Редактировать"/>
+                    <input type="hidden" class="form-control" id="questionIdToEdit" name="questionIdToEdit" value="@questionId" />
+                }
+
+                @{
+                    <h3 style="font-weight: bold;">@questionVal</h3>
+                    
+
+                    foreach (var answer in ViewBag.Answers)
+                    {
+                        if (answer.QuestionId == question.QuestionId)
+                        {
+                            var answerId = answer.AnswerId;
+                            var answerVal = answer.AnswerValue;
+
+                            <p style="font-size: 17px;">@answerVal</p>
+                            @*<input type="text" class="form-control" id="@answerId" name="@answerId" value="" style="width: 90%"/>*@
+                        }
+                    }
+                }
+            </div>
+        </div>
+    }
+</div>

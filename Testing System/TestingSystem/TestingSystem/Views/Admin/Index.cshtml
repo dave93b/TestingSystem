@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @model TestingSystem.Models.Student
-<h2>Результаты тестирования</h2>
+<h2 style="margin: 30px 0">Результаты тестирования</h2>
 
 <table class="table table-hover table-bordered">
     <tr>
@@ -16,6 +16,8 @@
         <th>IP-адрес компьютера</th>
         <th>Дата прохождения теста</th>
         <th>Баллы</th>
+        <th>Количество вопросов</th>
+        <th>Процент правильных ответов</th>
     </tr>
     @{ int i = 1; }
     @foreach (var result in ViewBag.stud)
@@ -28,6 +30,8 @@
         var ipAddress = result.IPAddress;
         var dateTime = result.DateAndTime.ToString();
         var points = result.Points;
+        var totalQuestions = result.TotalPoints;
+        var percent = result.AnswersPercent;
         <tr>
             <td>@id</td>
             <td>@name</td>
@@ -37,6 +41,8 @@
             <td>@ipAddress</td>
             <td>@dateTime</td>
             <td><b>@points</b></td>
+            <td><b>@totalQuestions</b></td>
+            <td><b>@percent</b></td>
         </tr>
     }
 </table>

@@ -7,8 +7,12 @@
 <div class="row">
     <div class="col-xs-12">
         <h1 class="text-center">Ласкаво просимо до системи тестування</h1>
-        <button id="start" type="submit">Почати тестування</button>
-        <button id="aboutTesting" type="submit">Правила</button>
+        <div id="buttons">
+            <button id="start" type="submit">ПОЧАТИ ТЕСТУВАННЯ</button>
+            <button id="aboutTesting" type="submit">ПРАВИЛА</button>
+        </div>
+        
+        </div>
         <div class="main" id="main">
             @using (@Html.BeginForm("Index", "Home", FormMethod.Post, new {id = "personalDataForm"}))
             {

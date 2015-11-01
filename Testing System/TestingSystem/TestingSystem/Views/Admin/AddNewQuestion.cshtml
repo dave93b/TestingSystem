@@ -4,24 +4,27 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Редактировать вопросы</h2>
+<h2 style="margin: 30px 0">&#10010; Добавить новый вопрос</h2>
 
-@foreach (var question in ViewBag.Questions)
+@using (@Html.BeginForm("AddNewQuestion","Admin", FormMethod.Post))
 {
-    var questionId = question.QuestionId;
-    var questionVal = question.QuestionValue;
+    <textarea cols="20" rows="3" id="questionText" name="questionText" class="form-control" placeholder="Вопрос" style="width: 500px;"></textarea>
     
-    <h3>@questionId. @questionVal</h3>
+    <input type="text" id="answer1Text" name="answer1Text" class="form-control" placeholder="Ответ №1" style="display: inline-block;width: 500px;"/>
+    <input type="radio" id="correctAnswerRadio1" name="correctAnswerRadio" value="1" checked="checked"/>
+    <label for="correctAnswerRadio1">Правильный ответ</label><br/>
 
-    foreach (var answer in ViewBag.Answers)
-    {
-        if (answer.QuestionId == question.QuestionId)
-        {
-            var answerId = answer.AnswerId;
-            var answerVal = answer.AnswerValue;
+    <input type="text" id="answer2Text" name="answer2Text" class="form-control" placeholder="Ответ №2" style="display: inline-block;width: 500px;"/>
+    <input type="radio" id="correctAnswerRadio2" name="correctAnswerRadio" value="2"/>
+    <label for="correctAnswerRadio2">Правильный ответ</label><br/>
 
-            <a href="#">@answerId. @answerVal</a><br />
-        }
+    <input type="text" id="answer3Text" name="answer3Text" class="form-control" placeholder="Ответ №3" style="display: inline-block;width: 500px;"/>
+    <input type="radio" id="correctAnswerRadio3" name="correctAnswerRadio" value="3"/>
+    <label for="correctAnswerRadio3">Правильный ответ</label><br/>
 
-    }
+    <input type="text" id="answer4Text" name="answer4Text" class="form-control" placeholder="Ответ №4" style="display: inline-block;width: 500px;"/>
+    <input type="radio" id="correctAnswerRadio4" name="correctAnswerRadio" value="4"/>
+    <label for="correctAnswerRadio4">Правильный ответ</label><br/>
+
+    <button type="submit" id="startTestBtn">Добавить</button>
 }

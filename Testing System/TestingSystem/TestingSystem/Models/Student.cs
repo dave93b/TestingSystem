@@ -15,6 +15,8 @@ namespace TestingSystem.Models
         public DateTime DateAndTime { get; set; }
         public string PCName { get; set; }
         public int Points { get; set; }
+        public int TotalQuestions { get; set; }
+        public int Percent { get; set; }
     }
     public class StudentDbContext : DbContext
     {

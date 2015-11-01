@@ -32,7 +32,7 @@ INSERT CorrectAnswer
 (QuestionId, AnswerId)
 VALUES
 ('1', '2'),
-('2', '8'),
+('2', '7'),
 ('3', '11'),
 ('4', '15')
 GO

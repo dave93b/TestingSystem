@@ -73,7 +73,9 @@ CREATE TABLE Result
 	[DateAndTime] datetime2 (2) NOT NULL,
 	[PCName] NVARCHAR(100) NULL,
 	[IPAddress] NVARCHAR(100) NULL,
-	[Points] int NOT NULL
+	[Points] int NOT NULL,
+	[TotalPoints] int NOT NULL,
+	[AnswersPercent] decimal(5,2) NOT NULL
 )
 GO
 

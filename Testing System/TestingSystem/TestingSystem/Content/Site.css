@@ -147,3 +147,28 @@ input[type="radio"] + label::before {
 input[type="radio"]:checked + label::before {
     background-image: url(../Content/Images/radio_on.png);
 }
+
+
+#printBtn {
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none;
+    background: none;
+    background-image: url('Images/print.png');
+    background-repeat: no-repeat;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #resultTable, #resultTable * {
+    visibility: visible;
+  }
+  #resultTable {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

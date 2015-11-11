@@ -5,8 +5,14 @@
 }
 @model TestingSystem.Models.Student
 <h2 style="margin: 30px 0">Результаты тестирования</h2>
-
-<table class="table table-hover table-bordered">
+<button type="button" id="printBtn" class="pull-right"></button>
+<script type="text/javascript">
+    $("#printBtn").click(function () {
+        window.print();
+        
+    });
+</script>
+<table id="resultTable" class="table table-hover table-bordered">
     <tr>
         <th>№</th>
         <th>Имя</th>

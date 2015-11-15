@@ -1,30 +1,30 @@
 ﻿
 @{
-    ViewBag.Title = "AddNewQuestion";
+    ViewBag.Title = "Додати нове питання";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2 style="margin: 30px 0">&#10010; Добавить новый вопрос</h2>
+<h2 style="margin: 30px 0">&#10010; Додати нове питання</h2>
 
 @using (@Html.BeginForm("AddNewQuestion","Admin", FormMethod.Post))
 {
-    <textarea cols="20" rows="3" id="questionText" name="questionText" class="form-control" placeholder="Вопрос" style="width: 500px;"></textarea>
+    <textarea cols="20" rows="3" id="questionText" name="questionText" class="form-control" placeholder="Питання" style="width: 500px;"></textarea>
     
-    <input type="text" id="answer1Text" name="answer1Text" class="form-control" placeholder="Ответ №1" style="display: inline-block;width: 500px;"/>
+    <input type="text" id="answer1Text" name="answer1Text" class="form-control" placeholder="Відповідь №1" style="display: inline-block;width: 500px;"/>
     <input type="radio" id="correctAnswerRadio1" name="correctAnswerRadio" value="1" checked="checked"/>
-    <label for="correctAnswerRadio1">Правильный ответ</label><br/>
+    <label for="correctAnswerRadio1">Вірна відповідь</label><br/>
 
-    <input type="text" id="answer2Text" name="answer2Text" class="form-control" placeholder="Ответ №2" style="display: inline-block;width: 500px;"/>
+    <input type="text" id="answer2Text" name="answer2Text" class="form-control" placeholder="Відповідь №2" style="display: inline-block;width: 500px;"/>
     <input type="radio" id="correctAnswerRadio2" name="correctAnswerRadio" value="2"/>
-    <label for="correctAnswerRadio2">Правильный ответ</label><br/>
+    <label for="correctAnswerRadio2">Вірна відповідь</label><br/>
 
-    <input type="text" id="answer3Text" name="answer3Text" class="form-control" placeholder="Ответ №3" style="display: inline-block;width: 500px;"/>
+    <input type="text" id="answer3Text" name="answer3Text" class="form-control" placeholder="Відповідь №3" style="display: inline-block;width: 500px;"/>
     <input type="radio" id="correctAnswerRadio3" name="correctAnswerRadio" value="3"/>
-    <label for="correctAnswerRadio3">Правильный ответ</label><br/>
+    <label for="correctAnswerRadio3">Вірна відповідь</label><br/>
 
-    <input type="text" id="answer4Text" name="answer4Text" class="form-control" placeholder="Ответ №4" style="display: inline-block;width: 500px;"/>
+    <input type="text" id="answer4Text" name="answer4Text" class="form-control" placeholder="Відповідь №4" style="display: inline-block;width: 500px;"/>
     <input type="radio" id="correctAnswerRadio4" name="correctAnswerRadio" value="4"/>
-    <label for="correctAnswerRadio4">Правильный ответ</label><br/>
+    <label for="correctAnswerRadio4">Вірна відповідь</label><br/>
 
-    <button type="submit" id="startTestBtn">Добавить</button>
+    <button type="submit" id="startTestBtn">Додати</button>
 }

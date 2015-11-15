@@ -172,3 +172,12 @@ input[type="radio"]:checked + label::before {
     top: 0;
   }
 }
+
+.deleteResultBtn {
+    color: #7B7B7B;
+}
+
+.deleteResultBtn:hover {
+    color: red;
+    text-decoration: none;
+}

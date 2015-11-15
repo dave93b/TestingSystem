@@ -1,10 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "Результаты тестирования";
+    ViewBag.Title = "Результати тестування";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @model TestingSystem.Models.Student
-<h2 style="margin: 30px 0">Результаты тестирования</h2>
+<h2 style="margin: 30px 0">Результати тестування</h2>
 <button type="button" id="printBtn" class="pull-right"></button>
 <script type="text/javascript">
     $("#printBtn").click(function () {
@@ -15,15 +15,16 @@
 <table id="resultTable" class="table table-hover table-bordered">
     <tr>
         <th>№</th>
-        <th>Имя</th>
-        <th>Фамилия</th>
-        <th>Группа</th>
-        <th>Имя компьютера</th>
-        <th>IP-адрес компьютера</th>
-        <th>Дата прохождения теста</th>
-        <th>Баллы</th>
-        <th>Количество вопросов</th>
-        <th>Процент правильных ответов</th>
+        <th>Ім'я</th>
+        <th>Прізвище</th>
+        <th>Група</th>
+        <th>Ім'я комп'ютера</th>
+        <th>IP-адреса комп'ютера</th>
+        <th>Дата проходження тесту</th>
+        <th>Бали</th>
+        <th>Кількість питань</th>
+        <th>Відсоток вірних відповідей</th>
+        <th>Видалити</th>
     </tr>
     @{ int i = 1; }
     @foreach (var result in ViewBag.stud)
@@ -49,6 +50,9 @@
             <td><b>@points</b></td>
             <td><b>@totalQuestions</b></td>
             <td><b>@percent</b></td>
+            <td align="center">
+                <a href="#" class="deleteResultBtn"><span>&#10006;</span></a>
+            </td>
         </tr>
     }
 </table>

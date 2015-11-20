@@ -159,6 +159,17 @@ input[type="radio"]:checked + label::before {
     background-repeat: no-repeat;
 }
 
+#delAllResultsBtn {
+    height: 30px;
+    width: 30px;
+    border: none;
+    outline: none;
+    background: none;
+    margin-right: 20px;
+    background-image: url('Images/delete.png');
+    background-repeat: no-repeat;
+}
+
 @media print {
   body * {
     visibility: hidden;
@@ -174,6 +185,9 @@ input[type="radio"]:checked + label::before {
 }
 
 .deleteResultBtn {
+    background: none;
+    border: none;
+    outline: none;
     color: #7B7B7B;
 }
 

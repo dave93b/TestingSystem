@@ -115,6 +115,27 @@ namespace TestingSystem.Controllers
             return RedirectToAction("EditQuestions");
         }
 
+        [HttpPost]
+        public ActionResult DeleteResult(int resultIdToDel)
+        {
+            var context = new TestingSystemEntities();
+            var resultToDel = from result in context.Results where result.Id == resultIdToDel select result;
+
+            context.Results.Remove(resultToDel.ToList()[0]);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteAllResults()
+        {
+            var context = new TestingSystemEntities();
+
+            context.Results.RemoveRange(context.Results.ToList());
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Login() //Login View

@@ -6,10 +6,24 @@
 @model TestingSystem.Models.Student
 <h2 style="margin: 30px 0">Результати тестування</h2>
 <button type="button" id="printBtn" class="pull-right"></button>
+@using (Html.BeginForm("DeleteAllResults", "Admin", FormMethod.Post))
+{
+    <button type="submit" id="delAllResultsBtn" class="pull-right deleteResultBtn"></button>
+}
+
 <script type="text/javascript">
     $("#printBtn").click(function () {
         window.print();
-        
+    });
+
+    $("#delAllResultsBtn").click(function () {
+        if (confirm("Ви впевнені, що хочете назавжди видалити всі дані з результатами?")) {
+            this.form.submit();
+        } else {
+            this.form.onsubmit = function () {
+                return false;
+            }
+        }
     });
 </script>
 <table id="resultTable" class="table table-hover table-bordered">
@@ -30,6 +44,7 @@
     @foreach (var result in ViewBag.stud)
     {
         var id = i++;
+        var idFromDb = result.Id;
         var name = result.Name;
         var lastName = result.LastName;
         var group = result.Group;
@@ -51,7 +66,12 @@
             <td><b>@totalQuestions</b></td>
             <td><b>@percent</b></td>
             <td align="center">
-                <a href="#" class="deleteResultBtn"><span>&#10006;</span></a>
+                @using (Html.BeginForm("DeleteResult", "Admin", FormMethod.Post))
+                {
+                    <input type="hidden" id="resultIdToDel" name="resultIdToDel" value="@idFromDb"/>
+                    <input type="submit" class="deleteResultBtn" value="&#10006;"/>
+                }
+                
             </td>
         </tr>
     }

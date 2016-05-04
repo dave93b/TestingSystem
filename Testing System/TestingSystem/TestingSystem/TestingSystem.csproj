@@ -166,11 +166,21 @@
     <Compile Include="Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\delete.png" />
     <Content Include="Content\Images\icon-error.png" />
+    <Content Include="Content\Images\print.png" />
+    <Content Include="Content\Images\radio_off.png" />
+    <Content Include="Content\Images\radio_on.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -227,6 +237,8 @@
     <Content Include="Views\Admin\AddNewQuestion.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\EditQuestion.cshtml" />
+    <Content Include="Views\Admin\EditQuestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

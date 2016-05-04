@@ -120,7 +120,7 @@ namespace TestingSystem.Controllers
         {
             var context = new TestingSystemEntities();
             var resultToDel = from result in context.Results where result.Id == resultIdToDel select result;
-
+            
             context.Results.Remove(resultToDel.ToList()[0]);
             context.SaveChanges();
             return RedirectToAction("Index");

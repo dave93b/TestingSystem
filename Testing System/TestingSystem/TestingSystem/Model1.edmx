@@ -40,6 +40,8 @@
           <Property Name="PCName" Type="nvarchar" MaxLength="100" />
           <Property Name="IPAddress" Type="nvarchar" MaxLength="100" />
           <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="TotalPoints" Type="int" Nullable="false" />
+          <Property Name="AnswersPercent" Type="decimal" Precision="5" Scale="2" Nullable="false" />
         </EntityType>
         <Association Name="FK_Answer_QuestionId">
           <End Role="Question" Type="Self.Question" Multiplicity="1" />
@@ -77,6 +79,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AddAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QuestionId" Type="int" Mode="In" />
+          <Parameter Name="AnswerText1" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AnswerText2" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AnswerText3" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AnswerText4" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AddCorrectAnswer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QuestionId" Type="int" Mode="In" />
+          <Parameter Name="CorrectAnswer" Type="int" Mode="In" />
+        </Function>
+        <Function Name="AddQuestion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QuestionText" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="DelQuestionAndAnswers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="QuestionId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="Хранилище TestingSystemModelContainer">
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CorrectAnswer" EntityType="Self.CorrectAnswer" Schema="dbo" store:Type="Tables" />
@@ -141,6 +160,8 @@
           <Property Name="PCName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="TotalPoints" Type="Int32" Nullable="false" />
+          <Property Name="AnswersPercent" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
         </EntityType>
         <Association Name="FK_Answer_QuestionId">
           <End Role="Question" Type="Self.Question" Multiplicity="1" />
@@ -195,6 +216,23 @@
             <End Role="Question" EntitySet="Questions" />
             <End Role="CorrectAnswer" EntitySet="CorrectAnswers" />
           </AssociationSet>
+          <FunctionImport Name="AddAnswers">
+            <Parameter Name="QuestionId" Mode="In" Type="Int32" />
+            <Parameter Name="AnswerText1" Mode="In" Type="String" />
+            <Parameter Name="AnswerText2" Mode="In" Type="String" />
+            <Parameter Name="AnswerText3" Mode="In" Type="String" />
+            <Parameter Name="AnswerText4" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddCorrectAnswer">
+            <Parameter Name="QuestionId" Mode="In" Type="Int32" />
+            <Parameter Name="CorrectAnswer" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AddQuestion">
+            <Parameter Name="QuestionText" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DelQuestionAndAnswers">
+            <Parameter Name="QuestionId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -239,9 +277,15 @@
                 <ScalarProperty Name="PCName" ColumnName="PCName" />
                 <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="TotalPoints" ColumnName="TotalPoints" />
+                <ScalarProperty Name="AnswersPercent" ColumnName="AnswersPercent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AddAnswers" FunctionName="Хранилище TestingSystemModel.AddAnswers" />
+          <FunctionImportMapping FunctionImportName="AddCorrectAnswer" FunctionName="Хранилище TestingSystemModel.AddCorrectAnswer" />
+          <FunctionImportMapping FunctionImportName="AddQuestion" FunctionName="Хранилище TestingSystemModel.AddQuestion" />
+          <FunctionImportMapping FunctionImportName="DelQuestionAndAnswers" FunctionName="Хранилище TestingSystemModel.DelQuestionAndAnswers" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

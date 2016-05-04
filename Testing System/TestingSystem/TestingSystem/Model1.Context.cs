@@ -12,8 +12,6 @@ namespace TestingSystem
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class TestingSystemEntities : DbContext
     {
@@ -31,61 +29,5 @@ namespace TestingSystem
         public virtual DbSet<CorrectAnswer> CorrectAnswers { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<Result> Results { get; set; }
-    
-        public virtual int AddAnswers(Nullable<int> questionId, string answerText1, string answerText2, string answerText3, string answerText4)
-        {
-            var questionIdParameter = questionId.HasValue ?
-                new ObjectParameter("QuestionId", questionId) :
-                new ObjectParameter("QuestionId", typeof(int));
-    
-            var answerText1Parameter = answerText1 != null ?
-                new ObjectParameter("AnswerText1", answerText1) :
-                new ObjectParameter("AnswerText1", typeof(string));
-    
-            var answerText2Parameter = answerText2 != null ?
-                new ObjectParameter("AnswerText2", answerText2) :
-                new ObjectParameter("AnswerText2", typeof(string));
-    
-            var answerText3Parameter = answerText3 != null ?
-                new ObjectParameter("AnswerText3", answerText3) :
-                new ObjectParameter("AnswerText3", typeof(string));
-    
-            var answerText4Parameter = answerText4 != null ?
-                new ObjectParameter("AnswerText4", answerText4) :
-                new ObjectParameter("AnswerText4", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddAnswers", questionIdParameter, answerText1Parameter, answerText2Parameter, answerText3Parameter, answerText4Parameter);
-        }
-    
-        public virtual int AddCorrectAnswer(Nullable<int> questionId, Nullable<int> correctAnswer)
-        {
-            var questionIdParameter = questionId.HasValue ?
-                new ObjectParameter("QuestionId", questionId) :
-                new ObjectParameter("QuestionId", typeof(int));
-    
-            var correctAnswerParameter = correctAnswer.HasValue ?
-                new ObjectParameter("CorrectAnswer", correctAnswer) :
-                new ObjectParameter("CorrectAnswer", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddCorrectAnswer", questionIdParameter, correctAnswerParameter);
-        }
-    
-        public virtual int AddQuestion(string questionText)
-        {
-            var questionTextParameter = questionText != null ?
-                new ObjectParameter("QuestionText", questionText) :
-                new ObjectParameter("QuestionText", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AddQuestion", questionTextParameter);
-        }
-    
-        public virtual int DelQuestionAndAnswers(Nullable<int> questionId)
-        {
-            var questionIdParameter = questionId.HasValue ?
-                new ObjectParameter("QuestionId", questionId) :
-                new ObjectParameter("QuestionId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DelQuestionAndAnswers", questionIdParameter);
-        }
     }
 }

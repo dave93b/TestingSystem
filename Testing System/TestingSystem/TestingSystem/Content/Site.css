@@ -1,6 +1,7 @@
 ﻿body {
     padding-bottom: 20px;
     background-color: #FFFDF2;
+    background-image: url('Images/diamond_upholstery.png');
     font-family: Trebuchet MS;
 }
 
@@ -59,9 +60,11 @@ input[type="text"] {
     outline: none;
 }
 
-#buttons {
-    width: 30%;
-    margin-left: 35%;
+@media only screen and (min-width: 1000px) {
+    #buttons {
+        width: 30%;
+        margin-left: 35%;
+    }
 }
 
 #start:hover, #aboutTesting:hover {
